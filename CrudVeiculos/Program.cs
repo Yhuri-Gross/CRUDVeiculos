@@ -16,6 +16,17 @@ builder.Services.AddControllers();
 // Adicionar o EndpointsApiExplorer
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()  
+                .AllowAnyHeader()  
+                .AllowAnyMethod();  
+        });
+});
+
 var app = builder.Build();
 
 // Aplicar migrações automaticamente
@@ -35,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowAll");
 
 app.MapControllers();
 
