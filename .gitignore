@@ -27,11 +27,9 @@ artifacts/
 *.tlog
 *.ide.log
 
-# Entity Framework
-Migrations/
 
-# Configuration files
-appsettings*.json
+
+
 
 # OS-specific files
 .DS_Store
@@ -50,3 +48,6 @@ Thumbs.db
 
 # Generated code
 *.generated.cs
+
+# Ignorar o banco de dados SQLite
+CrudVeiculos.db

@@ -35,7 +35,17 @@ git clone https://github.com/seu-usuario/crud-veiculos.git
 cd crud-veiculos
 ```
 
-### 2. Instale as Dependências
+### 2. Navegue até a pasta do projeto
+Entre na pasta do projeto antes de executar qualquer comando do terminal:
+
+```bash
+cd CRUDVeiculos
+```
+
+Isso é importante, pois todos os comandos abaixo devem ser executados a partir dessa pasta.
+
+
+### 3. Instale as Dependências
 
 Após clonar o repositório, navegue até o diretório do projeto no terminal e execute o seguinte comando para restaurar as dependências do projeto:
 
@@ -43,27 +53,16 @@ Após clonar o repositório, navegue até o diretório do projeto no terminal e 
 dotnet restore
 ```
 
-### 3. Configure o Banco de Dados
-O projeto já está configurado para usar o SQLite como banco de dados. A conexão com o banco de dados é definida no arquivo appsettings.json:
+### 4. Configure o Banco de Dados
+O projeto já está configurado para usar o SQLite como banco de dados. 
 
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Data Source=veiculos.db"
-  }
-}
-
-O banco de dados será automaticamente criado ao executar as migrações.
-
-### 4. Execute as Migrações
-Para criar a estrutura do banco de dados, execute os seguintes comandos para aplicar as migrações do Entity Framework Core:
-
-Isso criará o banco de dados SQLite chamado veiculos.db no diretório do projeto.
-
+Migrações: As migrações do Entity Framework Core foram geradas para criar a estrutura do banco de dados. Se você ainda não tem o banco de dados em sua máquina, basta executar o comando abaixo para aplicar as migrações e criar o banco de dados:
 
 ```bash
-dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
+
+Isso irá criar o banco de dados crudveiculos.db em sua máquina, com a estrutura definida pelas migrações.
 
 ### 5. Execute o Projeto
 Para iniciar a aplicação, execute o seguinte comando:
