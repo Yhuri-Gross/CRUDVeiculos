@@ -29,11 +29,17 @@ public class VeiculosController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Veiculo>> PostVeiculo(Veiculo veiculo)
+    public IActionResult PostVeiculo([FromBody] Veiculo veiculo)
     {
+        if (veiculo == null)
+        {
+            return BadRequest("Veículo é nulo.");
+        }
+
         _context.Veiculos.Add(veiculo);
-        await _context.SaveChangesAsync();
-        return CreatedAtAction(nameof(GetVeiculo), new { id = veiculo.Id }, veiculo);
+        _context.SaveChanges();
+
+        return CreatedAtAction(nameof(PostVeiculo), new { id = veiculo.Id }, veiculo);
     }
 
     [HttpPut("{id}")]
